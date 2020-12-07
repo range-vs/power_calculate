@@ -1,17 +1,16 @@
 package services.converter;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import view.binding.BindingControl;
 import view.binding.ComboBindingControl;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class ComboConverter extends Converter {
 
     private Integer [] data;
-    private AtomicInteger current;
+    private SimpleIntegerProperty current;
 
-    public ComboConverter(Integer[] data, AtomicInteger  cur) {
+    public ComboConverter(Integer[] data, SimpleIntegerProperty cur) {
         if(data != null && data.length != 0) {
             this.data = data;
             current = cur;
@@ -20,7 +19,7 @@ public class ComboConverter extends Converter {
 
     @Override
     public BindingControl createNode() {
-        return new ComboBindingControl<Integer>(FXCollections.observableArrayList(data), current);
+        return new ComboBindingControl<>(FXCollections.observableArrayList(data), current);
     }
 
 }

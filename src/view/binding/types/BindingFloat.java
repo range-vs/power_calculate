@@ -1,15 +1,14 @@
 package view.binding.types;
 
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.scene.control.TextField;
 import services.validate.TextFormatNumber;
 
-import java.util.concurrent.atomic.AtomicReference;
-
 public class BindingFloat extends BindingType {
 
-    private AtomicReference<Float> data;
+    private SimpleFloatProperty data;
 
-    public BindingFloat(AtomicReference<Float> data){
+    public BindingFloat(SimpleFloatProperty data){
         this.data = data;
         onKeyUp = event -> { // validate data
             if(((TextField) event.getSource()).getText().equals("")){

@@ -31,6 +31,12 @@ public class TextFormatNumber {
             if(text.equals("")){
                 return change;
             }
+            String[] stopSymbols = new String[]{"f", "F", "d", "D"};
+            for(String s: stopSymbols){
+                if(text.contains(s)) {
+                    return null;
+                }
+            }
             try{
                 Float.parseFloat(text);
             }catch (Exception ex){

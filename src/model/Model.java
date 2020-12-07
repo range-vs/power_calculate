@@ -1,5 +1,7 @@
 package model;
 
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import model.device.Device;
 import model.factory_method.Creator;
 
@@ -13,13 +15,13 @@ public class Model {
 
     private ArrayList<String> groups;
     private ArrayList<ArrayList<Device>> elements;
-    private AtomicReference<Float> price;
+    private SimpleFloatProperty price;
     private ModelCalculate modelCalculate;
 
     public Model() {
         groups = new ArrayList<>();
         elements = new ArrayList<>();
-        price = new AtomicReference<Float>(0.f);
+        price = new SimpleFloatProperty(0.f);
         modelCalculate = new ModelCalculate();
     }
 
@@ -56,7 +58,7 @@ public class Model {
                         powers.add(s.nextInt());
                     }
                     Device device = creator.getDevice(type);
-                    device.initDevice(name, new AtomicInteger(count), new AtomicInteger(time), powers);
+                    device.initDevice(name, new SimpleIntegerProperty(count), new SimpleIntegerProperty(time), powers);
                     currentDevices.add(device);
                     if(s.hasNextLine()) {
                         s.nextLine();
@@ -113,7 +115,7 @@ public class Model {
         return elements;
     }
 
-    public AtomicReference<Float> getPrice() {
+    public SimpleFloatProperty getPrice() {
         return price;
     }
 

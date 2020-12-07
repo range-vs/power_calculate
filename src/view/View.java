@@ -1,5 +1,6 @@
 package view;
 
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
@@ -15,8 +16,6 @@ import view.binding.LabelBindingControl;
 import view.binding.TextBindingControl;
 import view.binding.types.BindingFloat;
 import view.binding.types.BindingInteger;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 public class View {
 
@@ -43,9 +42,9 @@ public class View {
                 Device d = model.getElements().get(i).get(j);
                 BindingControl [] controls = new BindingControl[]{
                         new LabelBindingControl(d.getName()),
-                        new TextBindingControl(d.getCount().toString(), new BindingInteger(d.getCount())),
+                        new TextBindingControl(d.getCount().getValue().toString(), new BindingInteger(d.getCount())),
                         d.getConverter().createNode(),
-                        new TextBindingControl(d.getTime().toString(), new BindingInteger(d.getTime()))
+                        new TextBindingControl(d.getTime().getValue().toString(), new BindingInteger(d.getTime()))
                 };
                 for(int k = 0;k<controls.length;k++){
                     GridPane.setMargin((Node)controls[k], new Insets(5, 10, 5, 10));
@@ -55,8 +54,8 @@ public class View {
         }
     }
 
-    public void createPriceTextField(HBox hBoxPrice, AtomicReference<Float> o){
-        hBoxPrice.getChildren().add(price = new TextBindingControl(o.toString(), new BindingFloat(o)));
+    public void createPriceTextField(HBox hBoxPrice, SimpleFloatProperty o){
+        hBoxPrice.getChildren().add(price = new TextBindingControl(o.getValue().toString(), new BindingFloat(o)));
         HBox.setMargin(price, new Insets(25, 0, 0,0));
     }
 

@@ -1,14 +1,14 @@
 package model.device;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import services.converter.Converter;
 import services.converter.TextConverter;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class TextDevice extends Device {
 
-    private AtomicInteger data;
+    private SimpleIntegerProperty data;
 
     @Override
     public Converter getConverter() {
@@ -16,11 +16,11 @@ public class TextDevice extends Device {
     }
 
     @Override
-    public void initDevice(String n, AtomicInteger c, AtomicInteger t, ArrayList<Integer> p) {
+    public void initDevice(String n, SimpleIntegerProperty c, SimpleIntegerProperty t, ArrayList<Integer> p) {
         setName(n);
         setCount(c);
         setTime(t);
-        data = new AtomicInteger(p.get(0));
+        data = new SimpleIntegerProperty(p.get(0));
     }
 
     @Override

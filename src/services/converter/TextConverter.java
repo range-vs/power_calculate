@@ -1,21 +1,20 @@
 package services.converter;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import view.binding.BindingControl;
 import view.binding.TextBindingControl;
 import view.binding.types.BindingInteger;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class TextConverter extends Converter {
 
-    private AtomicInteger data;
+    private SimpleIntegerProperty data;
 
-    public TextConverter(AtomicInteger  data) {
+    public TextConverter(SimpleIntegerProperty data) {
         this.data = data;
     }
 
     @Override
     public BindingControl createNode() {
-        return new TextBindingControl(data.toString(), new BindingInteger(data));
+        return new TextBindingControl(data.getValue().toString(), new BindingInteger(data));
     }
 }

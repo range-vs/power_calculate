@@ -1,15 +1,15 @@
 package model.device;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import services.converter.Converter;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Device {
 
     private String name;
-    private AtomicInteger count;
-    private AtomicInteger time;
+    private SimpleIntegerProperty count;
+    private SimpleIntegerProperty time;
 
 
     public String getName() {
@@ -20,24 +20,24 @@ public abstract class Device {
         this.name = name;
     }
 
-    public AtomicInteger getCount() {
+    public SimpleIntegerProperty getCount() {
         return count;
     }
 
-    public void setCount(AtomicInteger count) {
+    public void setCount(SimpleIntegerProperty count) {
         this.count = count;
     }
 
-    public AtomicInteger getTime() {
+    public SimpleIntegerProperty getTime() {
         return time;
     }
 
-    public void setTime(AtomicInteger time) {
+    public void setTime(SimpleIntegerProperty time) {
         this.time = time;
     }
 
     public abstract Converter getConverter();
-    public abstract void initDevice(String n, AtomicInteger c, AtomicInteger t, ArrayList<Integer> p);
+    public abstract void initDevice(String n, SimpleIntegerProperty c, SimpleIntegerProperty t, ArrayList<Integer> p);
     public abstract Integer getPower();
 
 }

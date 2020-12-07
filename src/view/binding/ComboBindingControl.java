@@ -1,5 +1,6 @@
 package view.binding;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 
@@ -7,9 +8,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ComboBindingControl<T> extends ComboBox implements BindingControl {
 
-    private AtomicInteger current;
+    private SimpleIntegerProperty current;
 
-    public ComboBindingControl(ObservableList<T> items, AtomicInteger cur){
+    public ComboBindingControl(ObservableList<T> items, SimpleIntegerProperty cur){
         super(items);
         current = cur;
         getSelectionModel().select(0);

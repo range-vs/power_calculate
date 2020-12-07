@@ -4,8 +4,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class ComboBindingControl<T> extends ComboBox implements BindingControl {
 
     private SimpleIntegerProperty current;
